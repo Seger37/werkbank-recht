@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================================
+  WERKBANK — DATENLÖSCHUNG ANFORDERN
+  ==========================================================================
+  Stand: 31.10.2026
+
+  Zweck: Google Play verlangt für das Datensicherheits-Formular eine
+  öffentliche URL, unter der Nutzer die Löschung ihrer Daten anfordern
+  können. Die Anforderungen laut Play:
+    1. bezieht sich auf App oder Entwicklernamen aus dem Store-Eintrag
+    2. zeigt gut sichtbar die Schritte zur Löschanforderung
+    3. nennt Art der zu löschenden/aufzubewahrenden Daten und Fristen
+
+  Veröffentlicht unter:
+    https://seger37.github.io/werkbank-recht/loeschung/
+
+  Diese Angaben MÜSSEN zum Code passen:
+    - Papierkorb: 30 Tage (sync/src/routen/papierkorb.js: PAPIERKORB_TAGE)
+    - Team löschen entfernt R2-Dateien und alle D1-Tabellen
+      (sync/src/routen/export.js: TABELLEN)
+    - verwaiste Dateien: täglicher Cron 03:17 UTC (sync/wrangler.toml)
+    - auf dem Gerät: bis der Nutzer löscht oder deinstalliert
+    - KEINE Konten, keine Kontodaten, keine Zahlungsdaten
+  ==========================================================================
+-->
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenlöschung anfordern – WerkBank</title>
+<style>
+  :root {
+    --flaeche: #f6f7f8; --karte: #ffffff; --linie: #e1e7ec;
+    --schrift: #333d47; --dezent: #6f7a87; --blau: #0854a0;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--flaeche); color: var(--schrift);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 Arial, sans-serif; line-height: 1.65; font-size: 16px;
+  }
+  .seite { max-width: 760px; margin: 0 auto; padding: 32px 18px 80px; }
+  header { border-bottom: 3px solid var(--blau); padding-bottom: 12px;
+           margin-bottom: 24px; }
+  h1 { font-size: 26px; color: var(--blau); margin: 0 0 6px; }
+  .stand { color: var(--dezent); font-size: 14px; margin: 0; }
+  h2 { font-size: 18px; color: var(--blau); margin: 34px 0 8px; }
+  h3 { font-size: 16px; margin: 22px 0 6px; }
+  .karte { background: var(--karte); border: 1px solid var(--linie);
+           border-radius: 12px; padding: 8px 24px 24px; }
+  p { margin: 12px 0; }
+  ol, ul { margin: 10px 0 10px 20px; padding: 0; }
+  li { margin: 8px 0; }
+  .kasten { background: #f0f5fa; border-left: 4px solid var(--blau);
+            padding: 12px 16px; border-radius: 6px; margin: 16px 0; }
+  .warnung { background: #fff4e5; border-left: 4px solid #e08c2a;
+             padding: 12px 16px; border-radius: 6px; margin: 16px 0; }
+  .dezent { color: var(--dezent); font-size: 14px; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+  th, td { text-align: left; padding: 9px 10px;
+           border-bottom: 1px solid var(--linie); vertical-align: top; }
+  th { font-size: 14px; color: var(--dezent); font-weight: 600; }
+  .weg { background: var(--karte); border: 1px solid var(--linie);
+         border-radius: 12px; padding: 4px 22px 18px; margin: 16px 0; }
+  .weg h3 { color: var(--blau); }
+  footer { margin-top: 40px; padding-top: 16px;
+           border-top: 1px solid var(--linie); color: var(--dezent);
+           font-size: 14px; }
+  a { color: var(--blau); }
+  @media print { body { background: #fff; }
+                 .karte, .weg { border: none; padding: 0; } }
+</style>
+</head>
+<body>
+<div class="seite">
+
+  <header>
+    <h1>Datenlöschung anfordern</h1>
+    <p class="stand">WerkBank – Buchhaltung fürs Handwerk · Anbieter: Seger Studio,
+       Steffen Seger · Stand: 31. Oktober 2026</p>
+  </header>
+
+  <div class="kasten">
+    <strong>Kurz:</strong> WerkBank hat <strong>keine Benutzerkonten</strong>.
+    Deine Daten liegen an zwei Stellen: <strong>auf deinem Gerät</strong> und —
+    nur wenn du den Team-Modus nutzt — <strong>im Team-Speicher</strong>.
+    Beides kannst du selbst löschen. Wenn etwas übrig bleibt, schreib eine
+    E-Mail; wir löschen es innerhalb von 30 Tagen.
+  </div>
+
+  <div class="karte">
+
+    <h2>1. Wo deine Daten liegen</h2>
+    <table>
+      <tr>
+        <th>Ort</th>
+        <th>Was dort liegt</th>
+      </tr>
+      <tr>
+        <td><strong>Auf deinem Gerät</strong></td>
+        <td>Alles, was du eingibst: Firmendaten, Kunden, Angebote,
+            Rechnungen, Buchhaltung, Projekte, Termine, Zeiten, Fotos,
+            Anhänge, Sicherungen.</td>
+      </tr>
+      <tr>
+        <td><strong>Im Team-Speicher</strong><br>
+            <span class="dezent">nur mit eingeschaltetem Team-Modus</span></td>
+        <td>Projekte (Name, Nummer, Status, Baustellenanschrift, Daten,
+            Notizen, Kundenname), Aufgaben, Pinnwand-Notizen, Termine,
+            Bautagebuch mit Fotos, Anhänge (Dateien bis 15 MB), dazu eine
+            zufällig erzeugte Geräte-Kennung, dein Anzeigename im Team und
+            das Gerätemodell. Speicherort: Europäische Union
+            (Cloudflare, Jurisdiction EEUR).</td>
+      </tr>
+    </table>
+    <p class="dezent">Nicht im Team-Speicher und damit nur auf deinem Gerät:
+       Buchhaltung und Belege, Ein- und Ausgaben, Rechnungsbeträge,
+       Kundenstamm, Preise, Materialien und deine Firmendaten.</p>
+
+    <h2>2. So löschst du deine Daten</h2>
+
+    <div class="weg">
+      <h3>Weg A — auf deinem Gerät (sofort)</h3>
+      <ol>
+        <li><strong>Einzelne Einträge:</strong> öffne den Eintrag und tippe
+            auf „löschen". Er verschwindet aus den Listen.</li>
+        <li><strong>Alles auf dem Gerät:</strong> deinstalliere die App
+            (Einstellungen → Apps → WerkBank → Deinstallieren). Damit sind
+            Datenbank, Fotos und Anhänge auf dem Gerät weg.</li>
+      </ol>
+      <p class="dezent">Was du vorher als Sicherungs-ZIP exportiert hast,
+         liegt im Download-Ordner deines Geräts — die App hat darauf keinen
+         Zugriff mehr. Lösche diese Datei bei Bedarf selbst.</p>
+    </div>
+
+    <div class="weg">
+      <h3>Weg B — im Team-Speicher (sofort, nur als Chef)</h3>
+      <ol>
+        <li>Öffne <strong>Firma &amp; Einstellungen</strong> → Karte
+            <strong>Team</strong>.</li>
+        <li>Tippe auf <strong>Team löschen</strong>.</li>
+        <li>Tippe den Team-Namen zur Bestätigung genau ein.</li>
+      </ol>
+      <p>Damit werden im Team-Speicher <strong>alle Dateien und alle
+         Datenbankeinträge</strong> gelöscht: Objekte, Zähler, Einladungen,
+         Notfall-Codes, Geräte, Mitglieder und der Team-Eintrag selbst.
+         Die Dateien werden zuerst entfernt, danach die Einträge — bricht
+         etwas ab, ist nichts halb gelöscht.</p>
+      <p class="dezent">Deine Daten auf dem Gerät bleiben dabei erhalten;
+         die App arbeitet ohne Team weiter.</p>
+    </div>
+
+    <div class="weg">
+      <h3>Weg C — per E-Mail (wenn du nicht Chef bist oder etwas übrig bleibt)</h3>
+      <ol>
+        <li>Schreibe eine E-Mail an
+            <a href="mailto:steffenseger882@gmail.com?subject=Datenl%C3%B6schung%20WerkBank">steffenseger882@gmail.com</a>
+            mit dem Betreff <strong>„Datenlöschung WerkBank"</strong>.</li>
+        <li>Nenne das <strong>Team</strong>, um das es geht (Team-Name) und —
+            falls bekannt — den <strong>Anzeigenamen</strong>, unter dem du
+            im Team stehst.</li>
+        <li>Wir bestätigen den Eingang innerhalb von <strong>7 Tagen</strong>
+            und löschen innerhalb von <strong>30 Tagen</strong>.</li>
+      </ol>
+      <p class="dezent">Diese Frist entspricht Art. 12 Abs. 3 DSGVO
+         (ein Monat ab Eingang).</p>
+    </div>
+
+    <h2>3. Wie lange Daten aufbewahrt werden</h2>
+    <table>
+      <tr><th>Was</th><th>Dauer</th></tr>
+      <tr>
+        <td>Gelöschte Einträge (Papierkorb)</td>
+        <td><strong>30 Tage</strong> wiederherstellbar, danach endgültig
+            entfernt.</td>
+      </tr>
+      <tr>
+        <td>Dateien ohne zugehörigen Eintrag</td>
+        <td>Werden automatisch entfernt — <strong>täglich</strong> im Dienst
+            (Lauf um 03:17 UTC).</td>
+      </tr>
+      <tr>
+        <td>Daten auf dem Gerät</td>
+        <td>Bis du sie löschst oder die App deinstallierst. Es gibt keine
+            automatische Löschung.</td>
+      </tr>
+      <tr>
+        <td>Team-Speicher nach „Team löschen"</td>
+        <td><strong>Sofort</strong> — Dateien und Datenbankeinträge.</td>
+      </tr>
+      <tr>
+        <td>Anfragen per E-Mail</td>
+        <td>Nach Abschluss der Löschung gelöscht, spätestens nach
+            <strong>30 Tagen</strong>.</td>
+      </tr>
+    </table>
+
+    <h2>4. Was wir nicht haben</h2>
+    <p>WerkBank erhebt <strong>keine</strong> Benutzerkonten, keine
+       E-Mail-Adressen zur Anmeldung, keine Passwörter, keine Zahlungsdaten,
+       keinen Standort, keine Werbe-IDs und keine Absturzberichte.
+       Es gibt deshalb auch kein „Konto", das gelöscht werden müsste —
+       nur die Daten, die du selbst eingibst.</p>
+
+    <h2>5. Kontakt für Datenschutz</h2>
+    <p>
+      <strong>Seger Studio</strong><br>
+      Inhaber: Steffen Seger<br>
+      Auf'm Marktländchen 11<br>
+      56566 Neuwied<br>
+      Deutschland<br>
+      E-Mail: <a href="mailto:steffenseger882@gmail.com">steffenseger882@gmail.com</a>
+    </p>
+
+  </div>
+
+  <footer>
+    <p>WerkBank · Buchhaltung fürs Handwerk, Handel und Dienstleistung.<br>
+       Die vollständige Datenschutzerklärung steht unter
+       <a href="../">seger37.github.io/werkbank-recht/</a> und in der App
+       unter „Firma &amp; Einstellungen → Datenschutz".</p>
+  </footer>
+
+</div>
+</body>
+</html>
