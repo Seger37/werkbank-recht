@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================================
+  WERKBANK — DATENSCHUTZERKLÄRUNG (öffentliche Fassung für Google Play)
+  ==========================================================================
+  Stand: 31.10.2026
+  Quelle: templates/datenschutz.html (App) + docs/Play-DataSafety-2026-10-31.md
+
+  VOR DEM LIVE-SCHALTEN ERSETZEN (alles, was in [eckigen Klammern] steht):
+    [Straße und Hausnummer]   → Anschrift
+    [PLZ] [Ort]               → Postleitzahl und Ort
+    [bitte@example.de]        → E-Mail-Adresse für Datenschutz-Anfragen
+    [Telefonnummer]           → optional; ohne Telefon wird der Abschnitt kürzer
+
+  DANACH:
+    1. Den Entwurfs-Kasten (.entwurf) im <body> löschen.
+    2. Die Zeile <meta name="robots" content="noindex"> löschen — sonst
+       findet Google die Seite nicht, und sie muss auffindbar sein.
+    3. Prüfen, dass KEINE eckige Klammer mehr im Text steht.
+
+  Was hier bewusst NICHT steht:
+    - kein DATEV-Export (seit E-2026-024 entfernt)
+    - kein „Seger Solutions" (richtig ist Seger Studio)
+    - keine Aussage „keine Server / keine Cloud" — seit dem Team-Modus falsch
+    - keine USt-IdNr. (nicht vorhanden; bei Kleinunternehmer § 19 UStG ist
+      keine Angabe nötig — wenn sich das ändert, hier ergänzen)
+  ==========================================================================
+-->
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Datenschutzerklärung – WerkBank</title>
+<style>
+  :root {
+    --flaeche: #f6f7f8;
+    --karte: #ffffff;
+    --linie: #e1e7ec;
+    --schrift: #333d47;
+    --dezent: #6f7a87;
+    --blau: #0854a0;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--flaeche); color: var(--schrift);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 Arial, sans-serif;
+    line-height: 1.65; font-size: 16px;
+  }
+  .seite { max-width: 760px; margin: 0 auto; padding: 32px 18px 80px; }
+  header { border-bottom: 3px solid var(--blau); padding-bottom: 12px;
+           margin-bottom: 24px; }
+  h1 { font-size: 26px; color: var(--blau); margin: 0 0 6px; }
+  .stand { color: var(--dezent); font-size: 14px; margin: 0; }
+  .entwurf {
+    background: #fff4e5; border: 2px solid #e08c2a; border-radius: 10px;
+    padding: 14px 18px; margin-bottom: 24px; font-size: 15px;
+  }
+  .entwurf strong { color: #9a5b00; }
+  h2 { font-size: 18px; color: var(--blau); margin: 34px 0 8px; }
+  h3 { font-size: 16px; margin: 22px 0 6px; }
+  .karte { background: var(--karte); border: 1px solid var(--linie);
+           border-radius: 12px; padding: 8px 24px 24px; }
+  p { margin: 12px 0; }
+  ul { margin: 10px 0 10px 20px; padding: 0; }
+  li { margin: 6px 0; }
+  .platzhalter { background: #fdecea; padding: 1px 5px; border-radius: 4px;
+                 font-weight: 600; }
+  .dezent { color: var(--dezent); font-size: 14px; }
+  .kasten { background: #f0f5fa; border-left: 4px solid var(--blau);
+            padding: 12px 16px; border-radius: 6px; margin: 16px 0; }
+  footer { margin-top: 40px; padding-top: 16px;
+           border-top: 1px solid var(--linie); color: var(--dezent);
+           font-size: 14px; }
+  a { color: var(--blau); }
+  @media print {
+    body { background: #fff; }
+    .entwurf { display: none; }
+    .karte { border: none; padding: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="seite">
+
+  <div class="entwurf">
+    <strong>Entwurf – noch nicht veröffentlichen.</strong><br>
+    Vor dem Live-Schalten bitte Anschrift, Ort und E-Mail-Adresse einsetzen
+    (alle Stellen sind rot markiert), diesen
+    Kasten löschen und <code>&lt;meta name="robots" content="noindex"&gt;</code>
+    im Seitenkopf entfernen.
+  </div>
+
+  <header>
+    <h1>Datenschutzerklärung</h1>
+    <p class="stand">WerkBank – Buchhaltung fürs Handwerk · Stand: 31. Oktober 2026</p>
+  </header>
+
+  <div class="karte">
+
+    <h2>1. Verantwortlicher</h2>
+    <p>Verantwortlich für die Datenverarbeitung durch die WerkBank-App ist:</p>
+    <p>
+      <strong>Seger Studio</strong><br>
+      <span class="platzhalter">[Straße und Hausnummer]</span><br>
+      <span class="platzhalter">[PLZ]</span> <span class="platzhalter">[Ort]</span><br>
+      Deutschland<br>
+      E-Mail: <span class="platzhalter">[bitte@example.de]</span><br>
+      <span class="dezent">Telefon: <span class="platzhalter">[Telefonnummer]</span></span>
+    </p>
+
+    <h2>2. Kein Konto, keine Anmeldung</h2>
+    <p>WerkBank arbeitet <strong>ohne Benutzerkonto</strong>. Es gibt keine
+       Registrierung, keine E-Mail-Adresse, kein Passwort und keinen Login.
+       Die App speichert alle Daten, die du eingibst, <strong>zuerst und
+       vollständig auf deinem Gerät</strong> – in einem geschützten
+       App-Bereich; erzeugte Dateien wie Rechnungen, Steuer-Exporte und
+       Sicherungen zusätzlich im Download-Ordner deines Geräts.</p>
+
+    <h2>3. Team-Modus: die einzige Datenübertragung</h2>
+    <p>Der Team-Modus ist <strong>freiwillig</strong> und standardmäßig
+       ausgeschaltet. Schaltest du ihn ein und legst ein Team an oder trittst
+       ihm bei, überträgt die App die <strong>geteilten</strong> Inhalte an
+       einen Server in der <strong>Europäischen Union</strong>, damit die
+       Geräte deines Teams sie abrufen können.</p>
+
+    <div class="kasten">
+      <strong>Ohne eingeschalteten Team-Modus verlässt kein einziges Datum
+      dein Gerät.</strong> Die App funktioniert vollständig offline.
+    </div>
+
+    <h3>Was übertragen wird</h3>
+    <ul>
+      <li><strong>Projekte:</strong> Name, Nummer, Status, Anschrift der
+          Baustelle, Start- und Anlagedatum, Notizen, Kundenname</li>
+      <li><strong>Aufgaben:</strong> Titel, Zugewiesener, Fälligkeit, Status,
+          Kommentar und ein optionales Foto</li>
+      <li><strong>Pinnwand-Notizen:</strong> Text, Verfasser, Datum</li>
+      <li><strong>Termine:</strong> Titel, Datum, Uhrzeit, Notiz</li>
+      <li><strong>Bautagebuch:</strong> Datum, Text und Fotos</li>
+      <li><strong>Anhänge:</strong> Dateiname und Datei (Fotos, PDF, Tabellen,
+          Textdokumente bis 15 MB je Datei)</li>
+      <li><strong>Zur Zuordnung:</strong> eine <strong>zufällig erzeugte
+          Geräte-Kennung</strong> (keine Werbe-ID, keine IMEI, keine
+          Seriennummer), dein Anzeigename im Team und das Gerätemodell</li>
+    </ul>
+
+    <h3>Was ausdrücklich <em>nicht</em> übertragen wird</h3>
+    <p><strong>Buchhaltung und Belege, Ein- und Ausgaben, Rechnungsbeträge,
+       der Kundenstamm, Preise und Materialien sowie deine Firmendaten</strong>
+       werden nie übertragen. Der Server kennt diese Daten nicht – er nimmt
+       technisch nur die sieben oben genannten Arten von Einträgen an und weist
+       alles andere ab.</p>
+
+    <h3>Wer die Daten verarbeitet</h3>
+    <p>Empfänger ist ausschließlich <strong>Cloudflare, Inc.</strong> als
+       Auftragsverarbeiter, auf Weisung des Verantwortlichen. Die Daten liegen
+       in der <strong>Europäischen Union</strong> (Cloudflare-Jurisdiction
+       „EEUR“); ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO ist
+       geschlossen. Eine Weitergabe an Dritte zu deren eigenen Zwecken findet
+       nicht statt. Die Übertragung erfolgt ausschließlich
+       <strong>verschlüsselt über HTTPS/TLS</strong>.</p>
+
+    <h3>Rechtsgrundlage</h3>
+    <p>Art. 6 Abs. 1 lit. b DSGVO (Erfüllung des Nutzungsvertrags) sowie
+       Art. 6 Abs. 1 lit. a DSGVO (Einwilligung durch das Einschalten des
+       Team-Modus). Die Einwilligung kannst du jederzeit widerrufen, indem du
+       den Team-Modus ausschaltest oder das Team verlässt.</p>
+
+    <h2>4. Zweck der Verarbeitung</h2>
+    <p>Die Verarbeitung dient ausschließlich der Organisation und Verwaltung
+       deines Gewerbes: Angebote, Rechnungen, Projekte, Termine,
+       Zeiterfassung, Buchhaltung und die Unterlagen für das Finanzamt.
+       Es findet <strong>keine Profilbildung, keine Werbung und keine
+       Analyse</strong> statt.</p>
+
+    <h2>5. Keine Analyse, kein Tracking, keine Absturzberichte</h2>
+    <p>Die App enthält <strong>keine Werbung, keine Tracking- oder
+       Analysedienste</strong> und erhebt keine Nutzungs- oder
+       Telemetriedaten. Es gibt <strong>keine</strong> Absturzbericht- oder
+       Diagnose-Bibliothek. Auch die Belegerkennung (Texterkennung auf Fotos)
+       läuft <strong>vollständig auf dem Gerät</strong>; Fotos werden dafür
+       nicht hochgeladen.</p>
+
+    <h2>6. Welche Daten auf dem Gerät verarbeitet werden</h2>
+    <p>Die App verarbeitet die von dir eingegebenen Daten: Firmendaten,
+       Kundendaten (Name, Anschrift, Kontaktdaten), Angebote, Rechnungen,
+       Projekte, Termine, Zeiterfassung, Preise und Materialien, Ein- und
+       Ausgaben sowie Fotos und Dateianhänge. Diese Daten entstehen
+       ausschließlich durch deine Eingaben und bleiben auf deinem Gerät –
+       geteilt werden nur die Inhalte aus Abschnitt 3, und nur im Team-Modus.</p>
+
+    <h2>7. Datensicherung und Umzug</h2>
+    <p>Die Datensicherung erzeugt eine ZIP-Datei mit deinen Daten. Sie liegt im
+       Download-Ordner deines Geräts und unterliegt deiner Kontrolle. Beim
+       Wiederherstellen oder beim Umzug auf ein neues Gerät bleiben die Daten in
+       deinem Besitz.</p>
+
+    <h2>8. Speicherdauer und Löschung</h2>
+    <p>Daten auf deinem Gerät bleiben gespeichert, bis du sie löschst oder die
+       App deinstallierst.</p>
+    <p>Im Team-Modus gilt: Einzelne Einträge löschst du in der App. Sie bleiben
+       <strong>30 Tage im Papierkorb</strong> wiederherstellbar und werden
+       danach entfernt. Der Chef kann das ganze Team löschen – dabei werden die
+       Dateien im Speicher und die zugehörigen Datenbankeinträge gelöscht.
+       Dateien, die zu keinem Eintrag mehr gehören, werden zusätzlich
+       automatisch entfernt (täglich).</p>
+
+    <h2>9. Rechte der betroffenen Personen</h2>
+    <p>Du hast das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung
+       (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung
+       (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch
+       (Art. 21 DSGVO).</p>
+    <p>Da die Daten auf deinem Gerät liegen, kannst du sie jederzeit selbst
+       einsehen, ändern, exportieren und löschen. Für eine vollständige
+       Löschung genügt das Deinstallieren der App. Für Daten im Team-Modus
+       wende dich an die oben genannte Adresse.</p>
+
+    <h2>10. Sicherheit</h2>
+    <p>Durch die lokale Speicherung ist das Risiko eines unbefugten Zugriffs
+       deutlich reduziert. Die Übertragung im Team-Modus erfolgt verschlüsselt.
+       Wie bei jeder App gilt: Schütze dein Gerät mit einer Bildschirmsperre und
+       bewahre Sicherungsdateien sicher auf.</p>
+
+    <h2>11. Beschwerderecht</h2>
+    <p>Du hast das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu
+       beschweren, insbesondere in dem Mitgliedstaat deines Aufenthaltsorts,
+       deines Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes.</p>
+
+    <h2>12. Änderungen dieser Erklärung</h2>
+    <p>Diese Erklärung wird angepasst, wenn sich die App oder die
+       Rechtslage ändert. Es gilt jeweils die hier veröffentlichte Fassung mit
+       dem oben genannten Stand.</p>
+
+  </div>
+
+  <h2>Impressum</h2>
+  <div class="karte">
+    <p>Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz):</p>
+    <p>
+      <strong>Seger Studio</strong><br>
+      <span class="platzhalter">[Straße und Hausnummer]</span><br>
+      <span class="platzhalter">[PLZ]</span> <span class="platzhalter">[Ort]</span><br>
+      Deutschland
+    </p>
+    <p>
+      E-Mail: <span class="platzhalter">[bitte@example.de]</span><br>
+      <span class="dezent">Telefon: <span class="platzhalter">[Telefonnummer]</span></span>
+    </p>
+    <p class="dezent">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:
+       <strong>Seger Studio</strong>, Anschrift wie oben.</p>
+    <p class="dezent">Eine Umsatzsteuer-Identifikationsnummer wird nicht
+       angegeben (Kleinunternehmer gemäß § 19 UStG).
+       <em>– Diesen Satz bitte anpassen oder löschen, wenn eine USt-IdNr.
+       vorliegt oder die Kleinunternehmerregelung nicht gilt.</em></p>
+  </div>
+
+  <footer>
+    <p>WerkBank · Buchhaltung fürs Handwerk, Handel und Dienstleistung.<br>
+       Stand dieser Seite: 31. Oktober 2026. Die vollständige Erklärung findest
+       du auch in der App unter „Firma &amp; Einstellungen → Datenschutz“.</p>
+  </footer>
+
+</div>
+</body>
+</html>
